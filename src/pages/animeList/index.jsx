@@ -6,4 +6,4 @@ const AnimeList = () => {
   return <div>All anime list</div>;
 };
 
-export default AnimeList;
+export default AnimeList; 
