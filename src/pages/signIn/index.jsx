@@ -1,28 +1,23 @@
 import { Button, TextField } from "@mui/material";
 import React, { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
-import "./style.css";
-import { authContext } from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../../context/authContext";
 
-const SignUp = () => {
+const SignIn = () => {
   const {
+    handleSubmit,
     control,
     formState: { errors },
-    watch,
     register,
-    handleSubmit,
   } = useForm();
+
+  const { handleSignIn } = useContext(authContext);
 
   const navigate = useNavigate();
 
-  const { handleSignUp } = useContext(authContext);
-
-  const pwd = watch("password");
-
   const onSubmit = (data) => {
-    console.log(data);
-    handleSignUp(data, navigate);
+    handleSignIn(data, navigate);
   };
 
   return (
@@ -67,36 +62,13 @@ const SignUp = () => {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="password2"
-            rules={{
-              required: "Потвердите пароль!",
-              validate: (value) =>
-                value === pwd || "The passwords do not match",
-            }}
-            render={({ field }) => (
-              <TextField
-                label="Потвердите пароль"
-                variant="outlined"
-                type="text"
-                className="sign-up__input"
-                error={!!errors.password2}
-                helperText={errors.password2?.message?.toString()}
-                {...field}
-              />
-            )}
-          />
           <Button type="submit" variant="contained">
-            Contained
+            Потвердить
           </Button>
-          <p>
-            Если у вас уже есть аккаунт <Link to="/sign-in">Логин</Link>
-          </p>
         </form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;
