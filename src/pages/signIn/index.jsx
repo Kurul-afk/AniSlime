@@ -62,7 +62,11 @@ const SignIn = () => {
               />
             )}
           />
-          <Button type="submit" variant="contained">
+          <Button
+            className="sign-up__btn_submit"
+            type="submit"
+            variant="contained"
+          >
             Потвердить
           </Button>
         </form>

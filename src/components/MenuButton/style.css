@@ -1,0 +1,16 @@
+.menu__btn {
+  color: #cb22d7 !important;
+}
+.menu__down_text {
+  color: #cb22d7;
+}
+.menu__down_btn {
+  color: #cb22d7 !important;
+  transition: 0.2s;
+}
+.menu__down_btn:hover {
+  color: #fff6f6 !important;
+}
+.MuiPopover-paper {
+  background-color: rgba(39, 40, 41, 0.8) !important;
+}

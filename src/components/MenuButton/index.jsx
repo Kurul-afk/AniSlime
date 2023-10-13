@@ -1,11 +1,15 @@
 import { Button, Menu, MenuItem } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authContext } from "../../context/authContext";
+import "./style.css";
 
 const MenuButton = () => {
-  const navigate = useNavigate();
+  const { handleSignOut } = useContext(authContext);
 
   const [currentUser, setCurrentUser] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem("email");
@@ -17,8 +21,15 @@ const MenuButton = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleSubmit = () => {
     setAnchorEl(null);
+    navigate("/user-profile");
+  };
+
+  const handleCloseForSignOut = () => {
+    setAnchorEl(null);
+    handleSignOut();
+    navigate("/sign-up");
   };
 
   return (
@@ -28,6 +39,7 @@ const MenuButton = () => {
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
+        className="menu__btn"
         onClick={handleClick}
       >
         Профиль
@@ -36,14 +48,20 @@ const MenuButton = () => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleSubmit}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem>{currentUser}</MenuItem>
-        <MenuItem onClick={handleClose}>Мой Аккаунт</MenuItem>
-        <MenuItem onClick={handleClose}>Выйти</MenuItem>
+        <span className="menu__down_text" style={{ padding: "0 1rem" }}>
+          {currentUser}
+        </span>
+        <MenuItem className="menu__down_btn" onClick={handleSubmit}>
+          Мой Аккаунт
+        </MenuItem>
+        <MenuItem className="menu__down_btn" onClick={handleCloseForSignOut}>
+          Выйти
+        </MenuItem>
       </Menu>
     </div>
   );

@@ -2,10 +2,11 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito", sans-serif !important;
+  color: #fff6f6;
 }
 .navbar {
-  background-color: #272829;
+  background-color: rgba(39, 40, 41, 0.9);
 }
 .navbar__container {
   width: 80%;
@@ -51,6 +52,16 @@
   gap: 0.8rem;
 }
 .sign-up__btn {
-  background-color: #cb22d7;
-  color: #fff6f6;
+  background-color: #cb22d7 !important;
+}
+.sign-up__btn:hover {
+  -webkit-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+  -moz-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+  box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+}
+.navbar__textField label.Mui-focused {
+  color: #cb22d7;
+}
+.navbar__textField .MuiFilledInput-underline:after {
+  border-bottom: 2px solid #cb22d7;
 }

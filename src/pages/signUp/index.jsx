@@ -87,8 +87,12 @@ const SignUp = () => {
               />
             )}
           />
-          <Button type="submit" variant="contained">
-            Contained
+          <Button
+            className="sign-up__btn_submit"
+            type="submit"
+            variant="contained"
+          >
+            Потвердить
           </Button>
           <p>
             Если у вас уже есть аккаунт <Link to="/sign-in">Логин</Link>

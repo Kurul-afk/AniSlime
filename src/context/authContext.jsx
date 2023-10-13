@@ -1,3 +1,4 @@
+import { Alert } from "@mui/material";
 import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +20,7 @@ const AuthContextProvider = ({ children }) => {
       navigate("/sign-in");
     } catch (error) {
       console.log(`Error ->: ${error.message}`);
-      alert("Пользователь уже зарегестрирован!");
+      toast.error("Пользователь уже зарегистрирован!");
       setError(error.message);
     } finally {
       setLoading(false);
@@ -40,15 +41,20 @@ const AuthContextProvider = ({ children }) => {
       if (error.response) {
         console.log(`error response status: ${error.response.status}`);
         if (error.response.status === 401) {
-          toast.warning(
-            "Проверьте вашу почту, или же зарегистрируйтесь снова."
-          );
+          toast.warning("error");
         }
       }
       setError(error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSignOut = () => {
+    setLoading(false);
+    localStorage.removeItem("tokkens");
+    localStorage.removeItem("email");
+    setLoading(true);
   };
   return (
     <authContext.Provider
@@ -58,6 +64,7 @@ const AuthContextProvider = ({ children }) => {
         loading,
         handleSignUp,
         handleSignIn,
+        handleSignOut,
       }}
     >
       {children}
