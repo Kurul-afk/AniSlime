@@ -32,6 +32,11 @@ const MenuButton = () => {
     navigate("/sign-up");
   };
 
+  const handleSettings = () => {
+    setAnchorEl(null);
+    navigate("/settings");
+  };
+
   return (
     <div>
       <Button
@@ -58,6 +63,9 @@ const MenuButton = () => {
         </span>
         <MenuItem className="menu__down_btn" onClick={handleSubmit}>
           Мой Аккаунт
+        </MenuItem>
+        <MenuItem className="menu__down_btn" onClick={handleSettings}>
+          Настройки
         </MenuItem>
         <MenuItem className="menu__down_btn" onClick={handleCloseForSignOut}>
           Выйти

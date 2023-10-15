@@ -1,18 +1,17 @@
-import { Alert } from "@mui/material";
 import axios from "axios";
 import React, { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const authContext = createContext();
 
-const API = "http://34.159.110.170/api/v1";
+const API = "http://34.89.235.149/api/v1";
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Auth
   const handleSignUp = async (user, navigate) => {
     setLoading(true);
     try {
@@ -20,7 +19,7 @@ const AuthContextProvider = ({ children }) => {
       navigate("/sign-in");
     } catch (error) {
       console.log(`Error ->: ${error.message}`);
-      toast.error("Пользователь уже зарегистрирован!");
+      alert("Пользователь уже зарегистрирован!");
       setError(error.message);
     } finally {
       setLoading(false);
@@ -56,6 +55,9 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("email");
     setLoading(true);
   };
+
+  // Settings
+  const handleChangePassword = () => {};
   return (
     <authContext.Provider
       value={{

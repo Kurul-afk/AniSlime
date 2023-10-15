@@ -6,6 +6,7 @@ import UserProfile from "./pages/userProfile";
 import Main from "./pages/Main";
 import SignUp from "./pages/signUp";
 import SignIn from "./pages/signIn";
+import SettingsPage from "./pages/settingsPage";
 
 const Routing = () => {
   return (
@@ -16,6 +17,7 @@ const Routing = () => {
       <Route path="/user-profile" element={<UserProfile />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/settings" element={<SettingsPage />} />
     </Routes>
   );
 };

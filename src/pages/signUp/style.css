@@ -15,6 +15,7 @@
 .sign-up__input {
   width: 100%;
   background-color: #393b3c;
+  color: #cb22d7;
   border-radius: 4px;
 }
 .sign-up__input:focus {
@@ -27,4 +28,21 @@
   -webkit-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
   -moz-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
   box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+}
+.sign-up__input .MuiInputLabel-root {
+  color: #fff6f6;
+}
+.sign-up__input .MuiOutlinedInput-input {
+  color: #eea1eb;
+  background-color: #515354;
+  border-radius: 4px;
+}
+.sign-up__input .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #cb22d7;
+}
+
+.sign-up__input
+  .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: #cb22d7;
 }
