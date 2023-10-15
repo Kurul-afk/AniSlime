@@ -69,6 +69,9 @@ const SignIn = () => {
           >
             Потвердить
           </Button>
+          <p>
+            Если у вас уже есть аккаунт <Link to="/sign-in">Логин</Link>
+          </p>
         </form>
       </div>
     </div>

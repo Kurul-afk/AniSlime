@@ -73,7 +73,7 @@ const SignUp = () => {
             rules={{
               required: "Потвердите пароль!",
               validate: (value) =>
-                value === pwd || "The passwords do not match",
+                value === pwd || "Пароли не совпадают!",
             }}
             render={({ field }) => (
               <TextField
@@ -101,3 +101,5 @@ const SignUp = () => {
       </div>
     </div>
   );
+}
+export default SignUp

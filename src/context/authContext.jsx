@@ -11,6 +11,27 @@ const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+    // refresh
+
+    const refreshTokens = async () =>{
+      const refreshToken = localStorage.getItem('tokkens')
+      if(refreshToken){
+        try {
+          const {data} = await axios.post(`${API}/account/refresh/`, refreshToken)
+          const {access, refresh} = data
+          console.log(data)
+          localStorage.setItem('accessToken', access)
+          localStorage.setItem('refreshToken', refresh)
+          console.log('токены обновлены')
+        } catch (error) {
+          console.log(error)
+          console.log(error.response.status)
+        }
+      } else {
+        console.log("Отсутствует refreshToken в локальном хранилище.");
+      }
+    }
+
   // Auth
   const handleSignUp = async (user, navigate) => {
     setLoading(true);
@@ -40,7 +61,8 @@ const AuthContextProvider = ({ children }) => {
       if (error.response) {
         console.log(`error response status: ${error.response.status}`);
         if (error.response.status === 401) {
-          toast.warning("error");
+          alert("error");
+          refreshTokens()
         }
       }
       setError(error.message);
@@ -57,7 +79,25 @@ const AuthContextProvider = ({ children }) => {
   };
 
   // Settings
-  const handleChangePassword = () => {};
+  const handleChangePassword = async (user, navigate) => {
+    setLoading(true)
+    try {
+      const { data } = await axios.post(`${API}/account/change-password/`, user)
+      console.log(`data: ${data}\nuser: ${user}`)
+      localStorage.removeItem("tokkens");
+      localStorage.removeItem("email");
+      navigate('/sign-in')
+    } catch (error) {
+      console.log(error.message)
+      if(error.response.status === 401){
+        console.log(error.response.status)
+        refreshTokens()
+      }
+      setError(error)
+    }finally{
+      setLoading(false)
+    }
+  };
   return (
     <authContext.Provider
       value={{
@@ -67,6 +107,8 @@ const AuthContextProvider = ({ children }) => {
         handleSignUp,
         handleSignIn,
         handleSignOut,
+        handleChangePassword,
+        refreshTokens
       }}
     >
       {children}

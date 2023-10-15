@@ -9,15 +9,18 @@ const SettingsSecurity = () => {
     handleSubmit,
     control,
     formState: { errors },
-    register,
+    watch,
   } = useForm();
 
-  const { handleSignIn } = useContext(authContext);
+  const { handleChangePassword, refreshTokens } = useContext(authContext);
 
   const navigate = useNavigate();
 
+  const pwd = watch("new_password");
+
   const onSubmit = (data) => {
-    handleSignIn(data, navigate);
+    console.log(data)
+    handleChangePassword(data, navigate);
   };
 
   return (
@@ -25,7 +28,7 @@ const SettingsSecurity = () => {
       <form className="sign-up__form" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
-          name="password_old"
+          name="old_password"
           rules={{ required: "Введите cтарый пароль!" }}
           render={({ field }) => (
             <TextField
@@ -33,15 +36,15 @@ const SettingsSecurity = () => {
               variant="outlined"
               type="text"
               className="sign-up__input"
-              error={!!errors.password_old}
-              helperText={errors.password_old?.message?.toString()}
+              error={!!errors.old_password}
+              helperText={errors.old_password?.message?.toString()}
               {...field}
             />
           )}
         />
         <Controller
           control={control}
-          name="password_new"
+          name="new_password"
           rules={{ required: "Введите пароль!" }}
           render={({ field }) => (
             <TextField
@@ -49,8 +52,27 @@ const SettingsSecurity = () => {
               variant="outlined"
               type="text"
               className="sign-up__input"
-              error={!!errors.password_new}
-              helperText={errors.password_new?.message?.toString()}
+              error={!!errors.new_password}
+              helperText={errors.new_password?.message?.toString()}
+              {...field}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="new_password2"
+          rules={{ required: "Введите пароль!",
+          validate: (value) =>
+          value === pwd || "Пароли не совпадают!",
+      }}
+          render={({ field }) => (
+            <TextField
+              label="Потвердите новый пароль"
+              variant="outlined"
+              type="text"
+              className="sign-up__input"
+              error={!!errors.new_password2}
+              helperText={errors.new_password2?.message?.toString()}
               {...field}
             />
           )}
