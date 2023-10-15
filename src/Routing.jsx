@@ -5,7 +5,7 @@ import AnimeDetail from "./pages/animeDetail";
 import UserProfile from "./pages/userProfile";
 import Main from "./pages/Main";
 import SignUp from "./pages/signUp";
-
+// ad
 const Routing = () => {
   return (
     <Routes>
