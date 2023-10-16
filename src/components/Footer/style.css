@@ -1,0 +1,42 @@
+li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white; /* Устанавливаем белый цвет для иконки Instagram */
+}
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Гарантирует, что контейнер займет всю высоту экрана */
+}
+
+footer {
+  background-color: rgba(0, 0, 0, 0.5); /* Прозрачный фон с альфа-каналом 0.5 */
+  color: white; /* Цвет текста */
+  text-align: center;
+  padding: 10px;
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-copyright {
+  background-color: #060505; /* Цвет верхней полосы футтера */
+  border-top: 1px solid white;
+}
+
+.footer-text {
+  background-color: rgba(
+    10,
+    9,
+    9,
+    0.5
+  ); /* Прозрачный фон с альфа-каналом 0.5 */
+  color: white; /* Цвет текста внутри футера */
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid white;
+}
