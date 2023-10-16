@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 
-// Список всех существующих аниме
-
-const AnimeList = () => {
-  return <div>All anime list</div>;
+const animeList = () => {
+  return (
+    <div>
+      asvgsfv
+    </div>
+  );
 };
 
-export default AnimeList; 
+export default animeList;

@@ -4,13 +4,17 @@ import Navbar from "./components/Navbar";
 import Routing from "./Routing";
 import Footer from "./components/Footer";
 
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routing />
-      <Footer />
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routing />
+        <Footer />
+      </BrowserRouter>
+      </>
+        
   );
 };
 

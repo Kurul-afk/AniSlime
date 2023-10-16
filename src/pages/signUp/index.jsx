@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import './style.css'
-import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const {
@@ -13,7 +12,6 @@ const SignUp = () => {
         handleSubmit,
     } = useForm()
     const pwd = watch('password')
-    const navigate = useNavigate()
 
     const onSubmit = (data)=>{
         console.log('worked')

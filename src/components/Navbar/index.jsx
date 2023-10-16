@@ -9,16 +9,6 @@ const Navbar = () => {
   
   return (
   <div className="navbar">
-    <div className="navbar__container">
-      <div className="navbar__left">
-        <Link className="navbar__link" to="/">Главная</Link>
-        <Link className="navbar__link" to="/anime-list">Жанр</Link>
-      </div>
-      <div className="navbar__right">
-        <TextField className="navbar__textField" id="filled-basic" label="Поиск" variant="filled" />
-        <Button variant="contained" color='success' onClick={()=> navigate('/sign-up')}>Primary</Button>
-      </div>
-    </div>
   </div>
   );
 };

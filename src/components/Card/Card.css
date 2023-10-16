@@ -1,0 +1,67 @@
+/* Card.css */
+
+.compact-card {
+    display: inline-block;
+    width: 200px;
+    border: 3px solid #ccc;
+    margin: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+  }
+  
+  .card-image {
+    max-width: 100%;  
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    justify-content: center;
+    margin: 10px;
+  }
+  
+  .card-description {
+    font-size: 0.9rem;
+    color: #777;
+  }
+  
+  .card-price {
+    font-size: 1.1rem;
+    justify-content: center ;
+    margin-top: 5px;
+  }
+  
+  .buy-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    
+  }
+  
+
+
+.compact-card {
+  transition: transform 0.4s;
+}
+
+.compact-card:hover {
+  transform: scale(1.07); 
+  color: black;
+  -webkit-box-shadow: -3px 5px 100px 100px rgba(100, 53, 121, 0.2) inset;
+-moz-box-shadow: -3px 5px 100px 100px rgba(100, 53, 121, 0.2) inset;
+box-shadow: -3px 5px 100px 100px rgba(100, 53, 121, 0.2) inset;
+
+}
+.compact-card:hover .card-image {
+  filter: graysce(100%); 
+  
+}
