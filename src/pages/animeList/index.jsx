@@ -1,9 +1,11 @@
 import React from "react";
 
-// Список всех существующих аниме
-
 const AnimeList = () => {
-  return <div>All anime list</div>;
+  return (
+    <div>
+      <h1>Список аниме</h1>
+    </div>
+  );
 };
 
 export default AnimeList;

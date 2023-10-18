@@ -4,6 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // Импорт 
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "./style.css";
+import Card from "../../components/Card";
 function Main() {
   const settings = {
     showArrows: true, // Показать стрелки
@@ -92,6 +93,7 @@ function Main() {
 
           {/* Добавьте больше изображений по аналогии */}
         </Carousel>
+        <Card />
       </div>
     </div>
   );

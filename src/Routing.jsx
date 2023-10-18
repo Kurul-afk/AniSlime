@@ -7,6 +7,8 @@ import Main from "./pages/Main";
 import SignUp from "./pages/signUp";
 import SignIn from "./pages/signIn";
 import SettingsPage from "./pages/settingsPage";
+import RecoveryPage from "./pages/recoveryPage";
+import RecoveryAccount from "./pages/recoveryAccount";
 
 const Routing = () => {
   return (
@@ -18,6 +20,8 @@ const Routing = () => {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/settings" element={<SettingsPage />} />
+      <Route path="/send-code" element={<RecoveryPage />} />
+      <Route path="/recovery-account" element={<RecoveryAccount />} />
     </Routes>
   );
 };

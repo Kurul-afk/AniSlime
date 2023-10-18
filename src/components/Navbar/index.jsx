@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, TextField, colors } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import "./style.css";
 import logo60 from "./img/icon-60.png";
 import MenuButton from "../MenuButton";
+import { authContext } from "../../context/authContext";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useContext(authContext);
 
-  const [currentUser, setCurrentUser] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem("email");
@@ -49,6 +50,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

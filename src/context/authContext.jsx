@@ -14,21 +14,17 @@ const AuthContextProvider = ({ children }) => {
   // refresh
 
   const refreshTokens = async () => {
-    const refreshToken = localStorage.getItem("tokkens");
-    if (refreshToken) {
+    const { refresh } = JSON.parse(localStorage.getItem("tokkens") || "{}");
+    if (refresh) {
       try {
-        const { data } = await axios.post(
-          `${API}/account/refresh/`,
-          refreshToken
-        );
+        const { data } = await axios.post(`${API}/account/refresh/`, {
+          refresh,
+        });
         const { access, refresh } = data;
-        console.log(data);
         localStorage.setItem("accessToken", access);
         localStorage.setItem("refreshToken", refresh);
-        console.log("токены обновлены");
       } catch (error) {
         console.log(error);
-        console.log(error.response.status);
       }
     } else {
       console.log("Отсутствует refreshToken в локальном хранилище.");
@@ -43,7 +39,9 @@ const AuthContextProvider = ({ children }) => {
       navigate("/sign-in");
     } catch (error) {
       console.log(`Error ->: ${error.message}`);
-      alert("Пользователь уже зарегистрирован!");
+      toast.warning("Пользователь уже зарегистрирован!", {
+        position: "top-center",
+      });
       setError(error.message);
     } finally {
       setLoading(false);
@@ -57,6 +55,7 @@ const AuthContextProvider = ({ children }) => {
       if (data) {
         localStorage.setItem("tokkens", JSON.stringify(data));
         localStorage.setItem("email", user.email);
+        setCurrentUser(user.email);
         navigate("/");
       }
     } catch (error) {
@@ -64,7 +63,10 @@ const AuthContextProvider = ({ children }) => {
       if (error.response) {
         console.log(`error response status: ${error.response.status}`);
         if (error.response.status === 401) {
-          alert("error");
+          toast.warning(
+            "Проверьте свою почту, или же этого пользователя не существует",
+            { position: "top-center" }
+          );
           refreshTokens();
         }
       }
@@ -78,17 +80,24 @@ const AuthContextProvider = ({ children }) => {
     setLoading(false);
     localStorage.removeItem("tokkens");
     localStorage.removeItem("email");
+    setCurrentUser(null);
     setLoading(true);
   };
 
   // Settings
 
   const handleChangePassword = async (user, navigate) => {
+    const { access } = JSON.parse(localStorage.getItem("tokkens") || "{}");
     setLoading(true);
     try {
       const { data } = await axios.post(
         `${API}/account/change-password/`,
-        user
+        user,
+        {
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+        }
       );
       console.log(`data: ${data}\nuser: ${user}`);
       localStorage.removeItem("tokkens");
@@ -105,10 +114,47 @@ const AuthContextProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  const sendCode = async (user, navigate) => {
+    setLoading(true);
+    try {
+      const { data } = await axios.post(`${API}/account/send-code/`, user);
+      toast.warning(
+        "На этот адрес электронной почты было отправлено письмо с кодом",
+        { position: "top-center" }
+      );
+      navigate("/recovery-account");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRecoveryAccount = async (user, navigate) => {
+    setLoading(true);
+    try {
+      const { data } = await axios.post(
+        `${API}/account/recovery-password/`,
+        user
+      );
+      if (data) {
+        console.log(data);
+        toast.success("Ваш аккаунт восстановлен!", { position: "top-center" });
+        navigate("/sign-in");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <authContext.Provider
       value={{
         currentUser,
+        setCurrentUser,
         error,
         loading,
         handleSignUp,
@@ -116,6 +162,8 @@ const AuthContextProvider = ({ children }) => {
         handleSignOut,
         handleChangePassword,
         refreshTokens,
+        sendCode,
+        handleRecoveryAccount,
       }}
     >
       {children}

@@ -3,6 +3,11 @@
   margin: 0px;
   padding: 0px;
   font-family: "Nunito", sans-serif !important;
+}
+p {
+  color: #fff6f6;
+}
+a {
   color: #fff6f6;
 }
 .navbar {

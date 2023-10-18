@@ -21,9 +21,11 @@ body {
 }
 
 .carousel_container {
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 30px;
+  margin-bottom: 50px; /* Добавьте нужный вам отступ снизу */
 }
 
 * {
@@ -36,18 +38,35 @@ li {
   list-style-type: none;
 }
 
-.details-arrow-prev {
-  font-size: 38px;
+.details-arrow-prev,
+.details-arrow-next {
+  font-size: 24px; /* Увеличьте размер стрелок */
+  width: 30px; /* Установите нужную ширину стрелок */
+  height: 30px; /* Установите нужную высоту стрелок */
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  border-radius: 50%; /* Закруглите углы, чтобы сделать круглыми */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
   cursor: pointer;
-  margin-top: 25vh;
-  margin-right: 10px; /* Добавляем отступ справа */
+  transition: background-color 0.3s;
+}
+
+.details-arrow-prev:hover,
+.details-arrow-next:hover {
+  background: rgba(0, 0, 0, 0.7); /* Измените цвет фона при наведении */
+}
+
+.details-arrow-prev {
+  left: 20px; /* Позиция левой стрелки */
 }
 
 .details-arrow-next {
-  font-size: 38px;
-  cursor: pointer;
-  margin-top: 25vh;
-  margin-left: 10px; /* Добавляем отступ слева */
+  right: 20px; /* Позиция правой стрелки */
 }
 
 .carousel-slider {

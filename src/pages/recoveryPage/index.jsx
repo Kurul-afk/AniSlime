@@ -3,21 +3,25 @@ import React, { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../../context/authContext";
+import { useState } from "react";
 
-const SignIn = () => {
+const RecoveryPage = () => {
   const {
-    handleSubmit,
     control,
     formState: { errors },
+    watch,
     register,
+    handleSubmit,
   } = useForm();
-
-  const { handleSignIn } = useContext(authContext);
+  const [showInput, setShowInput] = useState(false);
 
   const navigate = useNavigate();
 
+  const { sendCode } = useContext(authContext);
+
   const onSubmit = (data) => {
-    handleSignIn(data, navigate);
+    console.log(data);
+    sendCode(data, navigate);
   };
 
   return (
@@ -46,22 +50,6 @@ const SignIn = () => {
               />
             )}
           />
-          <Controller
-            control={control}
-            name="password"
-            rules={{ required: "Введите пароль!" }}
-            render={({ field }) => (
-              <TextField
-                label="Пароль"
-                variant="outlined"
-                type="text"
-                className="sign-up__input"
-                error={!!errors.password}
-                helperText={errors.password?.message?.toString()}
-                {...field}
-              />
-            )}
-          />
           <Button
             className="sign-up__btn_submit"
             type="submit"
@@ -69,17 +57,10 @@ const SignIn = () => {
           >
             Потвердить
           </Button>
-          <p>
-            Забыли{" "}
-            <Link to="/send-code" style={{ color: "color: #fff6f6;" }}>
-              Аккаунт
-            </Link>
-            ?
-          </p>
         </form>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default RecoveryPage;

@@ -5,6 +5,7 @@ import Routing from "./Routing";
 import Footer from "./components/Footer";
 import AuthContextProvider from "./context/authContext";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
