@@ -1,11 +1,10 @@
 import { Button, TextField } from "@mui/material";
 import React, { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
-import "./style.css";
 import { authContext } from "../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const RecoveryAccount = () => {
   const {
     control,
     formState: { errors },
@@ -16,13 +15,13 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const { handleSignUp } = useContext(authContext);
+  const { handleRecoveryAccount } = useContext(authContext);
 
-  const pwd = watch("password");
+  const pwd = watch("new_password");
 
   const onSubmit = (data) => {
     console.log(data);
-    handleSignUp(data, navigate);
+    handleRecoveryAccount(data, navigate);
   };
 
   return (
@@ -53,7 +52,23 @@ const SignUp = () => {
           />
           <Controller
             control={control}
-            name="password"
+            name="code"
+            rules={{ required: "Введите код!" }}
+            render={({ field }) => (
+              <TextField
+                label="Введите код"
+                variant="outlined"
+                type="text"
+                className="sign-up__input"
+                error={!!errors.code}
+                helperText={errors.code?.message?.toString()}
+                {...field}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="new_password"
             rules={{ required: "Введите пароль!" }}
             render={({ field }) => (
               <TextField
@@ -61,15 +76,15 @@ const SignUp = () => {
                 variant="outlined"
                 type="text"
                 className="sign-up__input"
-                error={!!errors.password}
-                helperText={errors.password?.message?.toString()}
+                error={!!errors.new_password}
+                helperText={errors.new_password?.message?.toString()}
                 {...field}
               />
             )}
           />
           <Controller
             control={control}
-            name="password2"
+            name="new_password2"
             rules={{
               required: "Потвердите пароль!",
               validate: (value) => value === pwd || "Пароли не совпадают!",
@@ -80,8 +95,8 @@ const SignUp = () => {
                 variant="outlined"
                 type="text"
                 className="sign-up__input"
-                error={!!errors.password2}
-                helperText={errors.password2?.message?.toString()}
+                error={!!errors.new_password2}
+                helperText={errors.new_password2?.message?.toString()}
                 {...field}
               />
             )}
@@ -93,15 +108,9 @@ const SignUp = () => {
           >
             Потвердить
           </Button>
-          <p>
-            Если у вас уже есть аккаунт{" "}
-            <Link to="/sign-in" style={{ color: "color: #fff6f6;" }}>
-              Логин
-            </Link>
-          </p>
         </form>
       </div>
     </div>
   );
 };
-export default SignUp;
+export default RecoveryAccount;

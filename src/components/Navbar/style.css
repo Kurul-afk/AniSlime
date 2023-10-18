@@ -1,34 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
-*{
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Nunito', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Nunito", sans-serif !important;
 }
-.navbar{
-    background-color: #4D4C7D;
+p {
+  color: #fff6f6;
 }
-.navbar__container{
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.2rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+a {
+  color: #fff6f6;
 }
-.navbar__left{
-    display: flex;
-    gap: 0.8rem;
+.navbar {
+  background-color: rgba(39, 40, 41, 0.9);
 }
-.navbar__link{
-    font-size: 18px;
-    color: #F99417;
-    text-decoration: none;
+.navbar__container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.navbar__textField>label{
-    color: #F99417;
+.navbar__left {
+  display: flex;
+  gap: 0.8rem;
 }
-.navbar__right{
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+.navbar__link {
+  font-size: 18px;
+  color: #fff6f6;
+  text-decoration: none;
+}
+.navbar__link:first-child {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #fff6f6;
+  text-decoration: none;
+}
+.navbar__link img {
+  width: 40px;
+}
+.navbar__link span {
+  color: #cb22d7;
+}
+.navbar__textField > label {
+  color: #fff6f6;
+}
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.sign-up__btn {
+  background-color: #cb22d7 !important;
+}
+.sign-up__btn:hover {
+  -webkit-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+  -moz-box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+  box-shadow: 1px 0px 11px 8px rgba(203, 34, 215, 0.2) !important;
+}
+.navbar__textField label.Mui-focused {
+  color: #cb22d7;
+}
+.navbar__textField .MuiFilledInput-underline:after {
+  border-bottom: 2px solid #cb22d7;
 }

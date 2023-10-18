@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4
+    url("https://kartinki.pics/uploads/posts/2021-07/1626975274_14-kartinkin-com-p-anime-oboi-v-fioletovikh-tonakh-anime-kras-14.jpg")
+    center/cover no-repeat fixed;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  max-width: 3400px;
+  margin: 0 auto;
+  background: transparent; /* Сделаем фон между каруселью прозрачным */
+  padding: 0 30px;
+}
+
+.image-carousel {
+  width: 176px;
+  height: 264px;
+  object-fit: cover;
+}
+
+.carousel_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px; /* Добавьте нужный вам отступ снизу */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+.details-arrow-prev,
+.details-arrow-next {
+  font-size: 24px; /* Увеличьте размер стрелок */
+  width: 30px; /* Установите нужную ширину стрелок */
+  height: 30px; /* Установите нужную высоту стрелок */
+  background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  border-radius: 50%; /* Закруглите углы, чтобы сделать круглыми */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.details-arrow-prev:hover,
+.details-arrow-next:hover {
+  background: rgba(0, 0, 0, 0.7); /* Измените цвет фона при наведении */
+}
+
+.details-arrow-prev {
+  left: 20px; /* Позиция левой стрелки */
+}
+
+.details-arrow-next {
+  right: 20px; /* Позиция правой стрелки */
+}
+
+.carousel-slider {
+  display: flex;
+}
+
+.carousel .carousel-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+  color: #fff;
+  display: none !important;
+}
+
+.image-carousel {
+  width: 176px;
+  height: 456px;
+  object-fit: cover;
+}
+
+.carousel_container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.carousel.carousel-slider .control-arrow {
+  background: rgba(56, 56, 56, 0.454) !important;
+  height: 50px !important;
+  right: 0;
+}
+
+.carousel-container {
+  margin-top: 100px;
+}
